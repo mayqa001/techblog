@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connor Walden's Tech Blog</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- this is what is causing the text to break -->
+  <link rel="stylesheet" href="/css/demo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/custom.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="/img/aaa.png" type="image/png">
+</head>
+
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <h1 style="margin: 0 0 0 0;">The Tech Blog</h1>
+
+          <ul class="d-flex flex-row" style="font-size: 26pt; margin: 0 0 0 50px;">
+            <li style="padding-left: 5px; padding-right: 5px;"><a href="/">Home</a></li>
+            <li style="padding-left: 5px; padding-right: 5px;">|</li>
+            <li style="padding-left: 5px; padding-right: 5px;"><a href="/dashboard">Dashboard</a></li>
+          </ul>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            {{!-- Login/Logout/Sign Up Forms --}}
+            <nav class="cd-main-nav js-main-nav">
+              {{#if logged_in}}
+              <ul class="cd-main-nav__list js-signin-modal-trigger">
+                <!-- insert more links here -->
+                <li><a class="btn btn-dark" href="#" id="logout" style="min-width: 150px; text-decoration: none;">Logout</a></li>
+              </ul>
+              {{else}}
+              <ul class="cd-main-nav__list js-signin-modal-trigger">
+                <!-- insert more links here -->
+                <li><a class="btn btn-dark" href="#" data-signin="signup"
+                    style="min-width: 150px; text-decoration: none;">Sign in / Sign up</a></li>
+              </ul>
+              {{/if}}
+            </nav>
+
+            <!-- this is the entire modal form, including the background -->
+            <main class="container container-fluid mt-5">
+              <div class="cd-signin-modal js-signin-modal">
+                <div class="cd-signin-modal__container">
+                  <!-- this is the container wrapper -->
+                  <ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
+                    <li><a href="#0" data-signin="login" data-type="login">Sign in</a></li>
+                    <li><a href="#0" data-signin="signup" data-type="signup">New account</a></li>
+                  </ul>
+              
+                  <div class="cd-signin-modal__block js-signin-modal-block" data-type="login">
+                    <!-- log in form -->
+                    <form class="cd-signin-modal__form" id="login-form">
+                      <p class="cd-signin-modal__fieldset">
+                        <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace"
+                          for="email-login">Username</label>
+                        <input
+                          class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
+                          id="username-login" type="text" placeholder="Username">
+                        <span class="cd-signin-modal__error">Error message here!</span>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace"
+                          for="password-login">Password</label>
+                        <input
+                          class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
+                          id="password-login" type="text" placeholder="Password">
+                        <a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+                        <span class="cd-signin-modal__error">Error message here!</span>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <input type="checkbox" id="remember-me" checked class="cd-signin-modal__input ">
+                        <label for="remember-me">Remember me</label>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <input class="btn btn-dark" type="submit" value="Login">
+                      </p>
+                    </form>
+              
+                    <p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Forgot your
+                        password?</a></p>
+                  </div> <!-- cd-signin-modal__block -->
+              
+                  <div class="cd-signin-modal__block js-signin-modal-block" data-type="signup">
+                    <!-- sign up form -->
+                    <form class="cd-signin-modal__form" id="signup-form">
+                      <p class="cd-signin-modal__fieldset">
+                        <label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace"
+                          for="name-signup">Username</label>
+                        <input
+                          class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
+                          id="name-signup" type="text" placeholder="Username">
+                        <span class="cd-signin-modal__error">Error message here!</span>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace"
+                          for="password-signup">Password</label>
+                        <input
+                          class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
+                          id="password-signup" type="text" placeholder="Password">
+                        <a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+                        <span class="cd-signin-modal__error">Error message here!</span>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <input type="checkbox" id="accept-terms" class="cd-signin-modal__input ">
+                        <label for="accept-terms">I agree to the Terms</label>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <input class="btn btn-dark" type="submit" value="Create account">
+                      </p>
+                    </form>
+                  </div> <!-- cd-signin-modal__block -->
+              
+                  <div class="cd-signin-modal__block js-signin-modal-block" data-type="reset">
+                    <!-- reset password form -->
+                    <p class="cd-signin-modal__message">Lost your password? Please enter your email address. You will
+                      receive a link to create a new password.</p>
+              
+                    <form class="cd-signin-modal__form">
+                      <p class="cd-signin-modal__fieldset">
+                        <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace"
+                          for="reset-email">E-mail</label>
+                        <input
+                          class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
+                          id="reset-email" type="email" placeholder="E-mail">
+                        <span class="cd-signin-modal__error">Error message here!</span>
+                      </p>
+              
+                      <p class="cd-signin-modal__fieldset">
+                        <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding"
+                          type="submit" value="Reset password">
+                      </p>
+                    </form>
+              
+                    <p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="login">Back to
+                        log-in</a></p>
+                  </div> <!-- cd-signin-modal__block -->
+                  <a href="#0" class="cd-signin-modal__close js-close">Close</a>
+                </div> <!-- cd-signin-modal__container -->
+              </div> <!-- cd-signin-modal -->
+            </main>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        {{{ body }}}
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Content Row -->
+
+
+  </div>
+  <!-- /.container-fluid -->
+
+  </div>
+  <!-- End of Main Content -->
+
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Made with &hearts; by Connor Walden</span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+</body>
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{else}}
+<script src="/js/placeholders.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/login.js"></script>
+{{/if}}
+
+</html>
